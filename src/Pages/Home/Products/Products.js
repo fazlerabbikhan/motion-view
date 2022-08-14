@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
-import './Products.css'
+import './Products.css';
+import Cart from './Cart';
 
 const Products = () => {
 
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch('https://idbdev.com/motion2/public/api/product-is-here-caught-me')
             .then(res => res.json())
             .then(data => setProducts(data.data));
     }, [])
+
+    // handle Add to Cart button
+    const addToCart = (product) => {
+        if (cart.indexOf(product) === -1) {
+            const newCart = [...cart, product];
+            setCart(newCart);
+            console.log(newCart);
+        }
+        else {
+            alert('You have already selected this item.');
+        }
+    }
 
     return (
         <div className='mt-20'>
@@ -21,8 +35,14 @@ const Products = () => {
                         products.map(product => <Product
                             key={products.id}
                             product={product}
+                            addToCart={addToCart}
                         ></Product>)
                     }
+                </div>
+                <div className='cart-container'>
+                    <Cart
+                        cart={cart}
+                    ></Cart>
                 </div>
             </div>
         </div>
