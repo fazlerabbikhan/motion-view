@@ -16,15 +16,24 @@ const Products = () => {
 
     // handle Add to Cart button
     const addToCart = (product) => {
-        if (cart.indexOf(product) === -1) {
+        if (cart.length <= 3 && cart.indexOf(product) === -1) {
             const newCart = [...cart, product];
             setCart(newCart);
             console.log(newCart);
         }
-        else {
+        else if (cart.indexOf(product) !== -1) {
             alert('You have already selected this item.');
         }
+        else {
+            alert('You can add maximum 4 items at one order.');
+        }
     }
+
+    //handle remove from cart
+    const removeItem = (product) => {
+        const newCart = cart.filter((item) => item.id !== product.id);
+        setCart(newCart);
+    };
 
     return (
         <div className='mt-20'>
@@ -42,6 +51,7 @@ const Products = () => {
                 <div className='cart-container'>
                     <Cart
                         cart={cart}
+                        removeItem={removeItem}
                     ></Cart>
                 </div>
             </div>
