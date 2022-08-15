@@ -1,31 +1,42 @@
 import React from 'react';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import logo from '../../images/logo.png';
-
-
-const menuItems = <>
-    <li><a className='font-bold'>Campaign</a></li>
-    <li><a className='font-bold'>Trending</a></li>
-    <li><a className='font-bold'>Brand</a></li>
-    <li><a className='font-bold'>Our Outlets</a></li>
-    <li><a className='font-bold'>Service Center</a></li>
-</>
-
-const productCategory = <>
-    <li><a>Smart Watches</a></li>
-    <li><a>Smart Phones</a></li>
-    <li><a>Headphones</a></li>
-    <li><a>Smart TV and Accessories</a></li>
-    <li><a>Computer and Accessories</a></li>
-    <li><a>Wireless Speaker</a></li>
-    <li><a>Security Cameras</a></li>
-    <li><a>Smart Home Appliances</a></li>
-    <li><a>Charger and Cables</a></li>
-    <li><a>Powerbaks</a></li>
-    <li><a>Network Components</a></li>
-    <li><a>Health and Outdoors</a></li>
-</>
+import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Navbar = () => {
+
+    const [user] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+    };
+
+    const menuItems = <>
+        <li><Link to='/' className='font-bold'>Campaign</Link></li>
+        <li><Link to='/' className='font-bold'>Trending</Link></li>
+        <li><Link to='/' className='font-bold'>Brand</Link></li>
+        <li><Link to='/' className='font-bold'>Our Outlets</Link></li>
+        <li><Link to='/' className='font-bold'>Service Center</Link></li>
+        <li>{user ? <button className='btn btn-ghost font-bold' onClick={logout} >{user?.displayName || ''} | Sign Out</button> : <Link to='/login' className='font-bold'>Login</Link>}</li>
+    </>
+
+    const productCategory = <>
+        <li><Link to='/'>Smart Watches</Link></li>
+        <li><Link to='/'>Smart Phones</Link></li>
+        <li><Link to='/'>Headphones</Link></li>
+        <li><Link to='/'>Smart TV and Accessories</Link></li>
+        <li><Link to='/'>Computer and Accessories</Link></li>
+        <li><Link to='/'>Wireless Speaker</Link></li>
+        <li><Link to='/'>Security Cameras</Link></li>
+        <li><Link to='/'>Smart Home Appliances</Link></li>
+        <li><Link to='/'>Charger and Cables</Link></li>
+        <li><Link to='/'>Powerbaks</Link></li>
+        <li><Link to='/'>Network Components</Link></li>
+        <li><Link to='/'>Health and Outdoors</Link></li>
+    </>
+
     return (
         <div>
             <div class="navbar bg-base-100">

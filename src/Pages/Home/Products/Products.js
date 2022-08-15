@@ -36,7 +36,7 @@ const Products = () => {
     };
 
     return (
-        <div className='mt-20'>
+        <div className='my-20'>
             <h1 className='text-4xl my-10 text-warning font-bold text-center'>Products</h1>
             <div className='container'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
