@@ -33,6 +33,7 @@ const Products = () => {
     const removeItem = (product) => {
         const newCart = cart.filter((item) => item.id !== product.id);
         setCart(newCart);
+        console.log(newCart);
     };
 
     return (
@@ -42,16 +43,17 @@ const Products = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
                         products.map(product => <Product
-                            key={products.id}
+                            key={product.id}
                             product={product}
                             addToCart={addToCart}
                         ></Product>)
                     }
                 </div>
-                <div className='cart-container'>
+                <div>
                     <Cart
                         cart={cart}
                         removeItem={removeItem}
+                        setCart={setCart}
                     ></Cart>
                 </div>
             </div>

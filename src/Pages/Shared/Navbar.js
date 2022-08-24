@@ -26,15 +26,15 @@ const Navbar = () => {
         <li><Link to='/'>Smart Watches</Link></li>
         <li><Link to='/'>Smart Phones</Link></li>
         <li><Link to='/'>Headphones</Link></li>
-        <li><Link to='/'>Smart TV and Accessories</Link></li>
-        <li><Link to='/'>Computer and Accessories</Link></li>
+        <li><Link to='/'>Smart TV & Accessories</Link></li>
+        <li><Link to='/'>Computer & Accessories</Link></li>
         <li><Link to='/'>Wireless Speaker</Link></li>
         <li><Link to='/'>Security Cameras</Link></li>
         <li><Link to='/'>Smart Home Appliances</Link></li>
-        <li><Link to='/'>Charger and Cables</Link></li>
-        <li><Link to='/'>Powerbaks</Link></li>
+        <li><Link to='/'>Charger & Cables</Link></li>
+        <li><Link to='/'>Powerbanks</Link></li>
         <li><Link to='/'>Network Components</Link></li>
-        <li><Link to='/'>Health and Outdoors</Link></li>
+        <li><Link to='/'>Health & Outdoors</Link></li>
     </>
 
     return (
